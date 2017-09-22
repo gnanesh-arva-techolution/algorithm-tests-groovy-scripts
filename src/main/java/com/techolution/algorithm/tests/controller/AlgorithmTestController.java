@@ -1,5 +1,6 @@
 package com.techolution.algorithm.tests.controller;
 
+import com.techolution.algorithm.tests.enums.Puzzle;
 import com.techolution.algorithm.tests.utils.TestResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ class AlgorithmTestController {
         } else {
             modelAndView.addObject("testResults", testResults);
         }
+        modelAndView.addObject("puzzleNames", Puzzle.getAllPuzzleNames());
         return modelAndView;
     }
 

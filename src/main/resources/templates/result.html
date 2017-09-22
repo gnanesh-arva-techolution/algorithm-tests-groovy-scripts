@@ -18,6 +18,12 @@ th, td {
 
     </style>
 </head>
+<br></br>
+<br></br>
+<div th:include="home :: uploadFragment"></div>
+<br></br>
+<br></br>
+<div></div>
 <table th:if="${testResults != null and !testResults.isEmpty()}">
     <tr style="font-weight: bold;">
         <td>Input File</td>
@@ -36,6 +42,9 @@ th, td {
 </table>
 
 <div th:if="${warning != null}" th:text="${warning}">Warning Message</div>
-<div></div>
-<a href="/">Upload Another File</a>
+<br></br>
+<br></br>
+<div th:include="home :: uploadFragment"></div>
+<br></br>
+<br></br>
 </html>

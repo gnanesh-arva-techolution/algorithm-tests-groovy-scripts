@@ -6,8 +6,6 @@ package com.techolution.algorithm.tests.solutions;
  */
 public class LargestSubsetSum {
 
-
-
     static long[] maxSubsetSum(int[] k) {
         int length = k.length;
         long[] maxSum = new long[length];

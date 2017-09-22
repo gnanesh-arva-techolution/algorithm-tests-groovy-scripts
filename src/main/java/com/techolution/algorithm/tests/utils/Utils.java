@@ -1,10 +1,10 @@
 package com.techolution.algorithm.tests.utils;
 
 import groovy.lang.GroovyShell;
-import org.codehaus.groovy.control.CompilationFailedException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,8 +22,8 @@ public class Utils {
     // Strings.
     public static final String UPLOAD_WARNING_MESSAGE = "Unable to upload the file.";
     public static final String PROCESSING_WARNING_MESSAGE = "Something went wrong.";
-    public static final String TEST_DATA_PATH = "C:\\Gnanesh Arva Backup\\Algorithm Tests\\algorithm-tests-groovy-scripts\\src\\main\\resources\\data\\";
-    public static final String TEST_SCRIPTS_PATH = "C:\\Gnanesh Arva Backup\\Algorithm Tests\\algorithm-tests-groovy-scripts\\src\\main\\resources\\scripts\\";
+    public static final String TEST_DATA_PATH = "data/";
+    public static final String TEST_SCRIPTS_PATH = "scripts/";
 
     // Numbers
     public static final Integer TIME_OUT = 5; // 5 seconds.
@@ -90,7 +90,9 @@ public class Utils {
                 bW.write("\n");
             }
             bW.flush();
-            File testScript = new File(TEST_SCRIPTS_PATH + puzzleName + ".groovy");
+            ClassLoader classLoader = new Utils().getClass().getClassLoader();
+            URL url = classLoader.getResource(TEST_SCRIPTS_PATH + puzzleName + ".groovy");
+            File testScript = new File(url.toURI());
             br = new BufferedReader(new FileReader(testScript));
             line = br.readLine();
             bW.append("\n");
@@ -104,11 +106,7 @@ public class Utils {
             // Run candidate file + testScript
             GroovyShell groovyShell = new GroovyShell();
             testResults = (List<TestResult>) groovyShell.run(fileToRun, new ArrayList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (CompilationFailedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return testResults;

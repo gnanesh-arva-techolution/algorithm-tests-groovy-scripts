@@ -15,7 +15,9 @@ return balancedOrNot_Test()
 
 public List<TestResult> balancedOrNot_Test() throws Exception {
     List<TestResult> testResults = new ArrayList<>();
-    File folder = new File(TEST_DATA_PATH + Puzzle.BALANCED_OR_NOT.getDescription());
+    ClassLoader classLoader = getClass().getClassLoader();
+    URL url = classLoader.getResource(TEST_DATA_PATH + Puzzle.BALANCED_OR_NOT.getDescription());
+    File folder = new File(url.toURI())
     for (File file : folder.listFiles()) {
         if (file.getAbsolutePath().contains("output")) {
             continue;

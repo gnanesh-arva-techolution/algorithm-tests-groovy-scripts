@@ -15,7 +15,9 @@ return waitingTime_Test()
 
 public List<TestResult> waitingTime_Test() throws Exception {
     List<TestResult> testResults = new ArrayList<>();
-    File folder = new File(TEST_DATA_PATH + Puzzle.BUYING_SHOW_TICKETS.getDescription());
+    ClassLoader classLoader = getClass().getClassLoader();
+    URL url = classLoader.getResource(TEST_DATA_PATH + Puzzle.BUYING_SHOW_TICKETS.getDescription());
+    File folder = new File(url.toURI())
     for (File file : folder.listFiles()) {
         if (file.getAbsolutePath().contains("output")) {
             continue;

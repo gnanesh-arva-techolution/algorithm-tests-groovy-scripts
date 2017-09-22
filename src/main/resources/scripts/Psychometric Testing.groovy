@@ -16,7 +16,9 @@ return jobOffers_Test()
 
 public List<TestResult> jobOffers_Test() throws Exception {
     List<TestResult> testResults = new ArrayList<>();
-    File folder = new File(TEST_DATA_PATH + Puzzle.PSYCHOMETRIC_TESTING.getDescription());
+    ClassLoader classLoader = getClass().getClassLoader();
+    URL url = classLoader.getResource(TEST_DATA_PATH + Puzzle.PSYCHOMETRIC_TESTING.getDescription());
+    File folder = new File(url.toURI())
     for (File file : folder.listFiles()) {
         if (file.getAbsolutePath().contains("output")) {
             continue;

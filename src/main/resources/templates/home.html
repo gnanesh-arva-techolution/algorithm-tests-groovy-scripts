@@ -5,10 +5,11 @@
     <title>Upload Algorithms</title>
 </head>
 <body>
-<div>
+<div th:fragment="uploadFragment">
     <form method="POST" name="form" action="/api/upload" enctype="multipart/form-data">
         Select Algorithm Name:
         <select name="puzzleName">
+            <option value="">Select Algorithm Name</option>
             <option th:each="puzzleName : ${puzzleNames}" th:value="${puzzleName}" th:text="${puzzleName}">Balanced Or Not</option>
         </select>
         Upload Algorithm: <input type="file" name="file"></input>
