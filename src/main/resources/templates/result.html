@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+
+    </style>
+</head>
+<table th:if="${testResults != null and !testResults.isEmpty()}">
+    <tr style="font-weight: bold;">
+        <td>Input File</td>
+        <td>Status</td>
+        <td>Expected Output</td>
+        <td>Output</td>
+        <td>Exe Time(millis)</td>
+    </tr>
+    <tr th:each="tR : ${testResults}" th:style="${tR.status == 'Failed' ? 'color: red;' : ''}">
+        <td th:text="${tR.inputFileName}"></td>
+        <td th:text="${tR.status}"></td>
+        <td th:text="${tR.expectedOutput.length() > 20 ? 'It is Huge' : tR.expectedOutput}"></td>
+        <td th:text="${tR.output.length() > 20 ? 'It is Huge' : tR.output}"></td>
+        <td th:text="${tR.executionTime}"></td>
+    </tr>
+</table>
+
+<div th:if="${warning != null}" th:text="${warning}">Warning Message</div>
+<div></div>
+<a href="/">Upload Another File</a>
+</html>
