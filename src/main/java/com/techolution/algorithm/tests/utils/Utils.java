@@ -2,6 +2,7 @@ package com.techolution.algorithm.tests.utils;
 
 import groovy.lang.GroovyShell;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.*;
 import java.net.URL;
@@ -58,7 +59,7 @@ public class Utils {
         return testStatus;
     }
 
-    public static List<TestResult> executeTestCases(MultipartFile multipartFile, String puzzleName) {
+    public static List<TestResult> executeTestCases(MultipartFile multipartFile, String puzzleName, ModelAndView modelAndView) {
         List<TestResult> testResults = new ArrayList<>();
         try {
             File candidateFile = File.createTempFile(generateRandomFileName(), ".groovy");
@@ -107,7 +108,9 @@ public class Utils {
             GroovyShell groovyShell = new GroovyShell();
             testResults = (List<TestResult>) groovyShell.run(fileToRun, new ArrayList());
         } catch (Exception e) {
-            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            e.printStackTrace(new PrintWriter(stringWriter));
+            modelAndView.addObject("stackTrace", stringWriter.toString());
         }
         return testResults;
     }

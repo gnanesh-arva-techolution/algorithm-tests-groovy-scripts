@@ -24,8 +24,8 @@ class AlgorithmTestController {
         if (multipartFile.isEmpty() || puzzleName == null || puzzleName.isEmpty()) {
             return new ModelAndView("result", "warning", UPLOAD_WARNING_MESSAGE);
         }
-        List<TestResult> testResults = executeTestCases(multipartFile, puzzleName);
         ModelAndView modelAndView = new ModelAndView("result");
+        List<TestResult> testResults = executeTestCases(multipartFile, puzzleName, modelAndView);
         if (testResults.isEmpty()) {
             modelAndView.addObject("warning", PROCESSING_WARNING_MESSAGE);
         } else {

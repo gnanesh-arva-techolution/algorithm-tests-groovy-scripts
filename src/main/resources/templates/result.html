@@ -47,4 +47,5 @@ th, td {
 <div th:include="home :: uploadFragment"></div>
 <br></br>
 <br></br>
+<div th:if="${stackTrace != null}" th:text="${stackTrace}"></div>
 </html>
