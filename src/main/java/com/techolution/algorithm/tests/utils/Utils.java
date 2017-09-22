@@ -22,8 +22,8 @@ public class Utils {
     // Strings.
     public static final String UPLOAD_WARNING_MESSAGE = "Unable to upload the file.";
     public static final String PROCESSING_WARNING_MESSAGE = "Something went wrong.";
-    public static final String TEST_DATA_PATH = "C:\\Gnanesh Arva Backup\\New folder (2)\\algorithm-tests\\src\\main\\resources\\data\\";
-    public static final String TEST_SCRIPTS_PATH = "C:\\Gnanesh Arva Backup\\New folder (2)\\algorithm-tests\\src\\main\\java\\com\\techolution\\algorithm\\tests\\scripts\\";
+    public static final String TEST_DATA_PATH = "C:\\Gnanesh Arva Backup\\Algorithm Tests\\algorithm-tests-groovy-scripts\\src\\main\\resources\\data\\";
+    public static final String TEST_SCRIPTS_PATH = "C:\\Gnanesh Arva Backup\\Algorithm Tests\\algorithm-tests-groovy-scripts\\src\\main\\resources\\scripts\\";
 
     // Numbers
     public static final Integer TIME_OUT = 5; // 5 seconds.

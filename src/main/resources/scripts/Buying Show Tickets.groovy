@@ -1,3 +1,4 @@
+
 import com.techolution.algorithm.tests.enums.Puzzle
 import com.techolution.algorithm.tests.utils.TestResult
 

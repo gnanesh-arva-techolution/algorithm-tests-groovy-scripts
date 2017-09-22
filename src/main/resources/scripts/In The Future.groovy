@@ -1,3 +1,4 @@
+
 import com.techolution.algorithm.tests.enums.Puzzle
 import com.techolution.algorithm.tests.utils.TestResult
 
@@ -5,16 +6,17 @@ import static com.techolution.algorithm.tests.utils.TestResult.Status.FAILED
 import static com.techolution.algorithm.tests.utils.TestResult.Status.PASSED
 import static com.techolution.algorithm.tests.utils.Utils.*
 
+
 /**
  * @author Gnanesh Arva
- * @since 19 Sep 2017 at 21:21
+ * @since 19 Sep 2017 at 21:41
  */
 
-return consecutive_Test()
+return minNum_Test()
 
-public List<TestResult> consecutive_Test() throws Exception {
+public List<TestResult> minNum_Test() throws Exception {
     List<TestResult> testResults = new ArrayList<>();
-    File folder = new File(TEST_DATA_PATH + Puzzle.CONSECUTIVE_SUM.getDescription());
+    File folder = new File(TEST_DATA_PATH + Puzzle.IN_THE_FUTURE.getDescription());
     for (File file : folder.listFiles()) {
         if (file.getAbsolutePath().contains("output")) {
             continue;
@@ -25,9 +27,11 @@ public List<TestResult> consecutive_Test() throws Exception {
         Scanner outputScanner = new Scanner(new File(filePath.replaceFirst("input", "output")));
         int expectedOutput = outputScanner.nextInt();
         Scanner scanner = new Scanner(file);
-        long num = scanner.nextLong();
+        int A = scanner.nextInt();
+        int K = scanner.nextInt();
+        int P = scanner.nextInt();
         long startTime = System.currentTimeMillis();
-        int output = consecutive(num);
+        int output = minNum(A, K, P);
         long executionTime = System.currentTimeMillis() - startTime;
         if (output == expectedOutput) {
             testResult = new TestResult(inputFileName, String.valueOf(output), String.valueOf(expectedOutput), PASSED.getDescription(), String.valueOf(executionTime));
@@ -37,8 +41,7 @@ public List<TestResult> consecutive_Test() throws Exception {
             testResults.add(testResult);
         }
     }
-    printTestResults(testResults, Puzzle.CONSECUTIVE_SUM.getDescription());
+    printTestResults(testResults, Puzzle.IN_THE_FUTURE.getDescription());
     getTestStatus(testResults);
-    return testResults
+    return testResults;
 }
-
