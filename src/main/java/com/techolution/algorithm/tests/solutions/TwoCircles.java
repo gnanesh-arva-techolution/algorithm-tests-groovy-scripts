@@ -1,8 +1,5 @@
 package com.techolution.algorithm.tests.solutions;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * @author Gnanesh Arva
  * @since 20 Sep 2017 at 18:12
@@ -39,14 +36,12 @@ public class TwoCircles {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] info = new String[sc.nextInt()];
-        sc.nextLine();
-        for (int i = 0; i < info.length; i++) {
-            info[i] = sc.nextLine();
+        int count = Integer.parseInt(args[0]);
+        String[] info = new String[count];
+        for (int index = 1; index <= count; count++) {
+            info[index - 1] = args[index];
         }
-        String[] relationShip = circles(info);
-        System.out.println(Arrays.toString(relationShip));
+        circles(info);
     }
 
 }
