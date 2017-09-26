@@ -38,7 +38,6 @@ public class TwoCircles {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(args));
         int count = Integer.parseInt(args[0]);
         String[] info = new String[count];
         for (int index = 1; index <= count; index++) {
