@@ -1,5 +1,7 @@
 package com.techolution.algorithm.tests.solutions;
 
+import java.util.Arrays;
+
 /**
  * @author Gnanesh Arva
  * @since 20 Sep 2017 at 18:12
@@ -36,12 +38,16 @@ public class TwoCircles {
     }
 
     public static void main(String[] args) {
+        System.out.println(Arrays.toString(args));
         int count = Integer.parseInt(args[0]);
         String[] info = new String[count];
-        for (int index = 1; index <= count; count++) {
+        for (int index = 1; index <= count; index++) {
             info[index - 1] = args[index];
         }
-        circles(info);
+        String[] result = circles(info);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+        }
     }
 
 }
